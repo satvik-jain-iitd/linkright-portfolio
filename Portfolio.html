@@ -17,7 +17,7 @@
     --accent-dim:#0C9A8E;
     --text:#f1f5f9;
     --text-secondary:#94a3b8;
-    --text-muted:#475569;
+    --text-muted:#64748b;
     --green:#10b981;
     --gold:#E5B80B;
     --border:rgba(15,190,175,0.15);
@@ -57,7 +57,7 @@
     display:flex;align-items:center;justify-content:space-between;
   }
   .brand{font-size:16px;font-weight:800;color:var(--accent);letter-spacing:.5px}
-  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{
     font-size:13px;font-weight:500;color:var(--text-muted);
     transition:color 300ms var(--ease);
@@ -65,6 +65,15 @@
   }
   .nav-links a:hover{color:var(--text)}
   .nav-links a.active{color:var(--accent)}
+  .nav-resume{
+    color:var(--accent) !important;
+    border:1px solid var(--border-strong);
+    border-radius:6px;
+    padding:5px 12px !important;
+    letter-spacing:.8px !important;
+    transition:background 300ms var(--ease),color 300ms var(--ease) !important;
+  }
+  .nav-resume:hover{background:rgba(15,190,175,0.12) !important;color:var(--accent) !important}
   .hamburger{
     display:none;background:none;border:0;cursor:pointer;
     color:var(--text);font-size:22px;line-height:1;padding:6px 10px;
@@ -77,6 +86,7 @@
   }
   .mobile-nav.open{display:flex}
   .mobile-nav a{font-size:22px;font-weight:600;color:var(--text)}
+  .mobile-nav .mobile-resume{font-size:18px !important;color:var(--accent) !important}
   .mobile-nav .close{
     position:absolute;top:18px;right:22px;font-size:26px;
     background:none;border:0;color:var(--text);cursor:pointer;
@@ -122,16 +132,26 @@
   }
   .hero-sub{
     font-size:20px;font-weight:400;color:var(--text-secondary);
-    margin:0 0 28px;letter-spacing:.3px;
+    margin:0 0 24px;letter-spacing:.3px;
+  }
+  /* P1.1 — scannable positioning line */
+  .hero-position{
+    font-size:17px;font-weight:500;color:var(--text);
+    max-width:660px;margin:0 auto 20px;line-height:1.65;
+    border-left:3px solid var(--accent);
+    padding:14px 20px;
+    background:rgba(15,190,175,0.05);
+    border-radius:0 8px 8px 0;
+    text-align:left;
   }
   .hero-descriptor{
     font-size:16px;color:var(--text-secondary);max-width:580px;
-    margin:0 auto 56px;line-height:1.8;
+    margin:0 auto 52px;line-height:1.8;
   }
 
   .stats{
     display:flex;justify-content:center;align-items:flex-start;gap:0;
-    margin-bottom:48px;flex-wrap:wrap;
+    margin-bottom:40px;flex-wrap:wrap;
   }
   .stat{padding:0 36px;text-align:center;position:relative;min-width:160px}
   .stat + .stat::before{
@@ -147,6 +167,8 @@
     text-transform:lowercase;letter-spacing:.5px;
   }
 
+  /* P0.5 — CTA cluster */
+  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:6px}
   .cta{
     display:inline-flex;align-items:center;gap:10px;
     height:44px;padding:0 24px;border-radius:8px;
@@ -159,12 +181,44 @@
     box-shadow:0 0 32px rgba(15,190,175,.35);
     transform:translateY(-1px);
   }
+  .cta-outline{
+    background:transparent;
+    color:var(--accent);
+    border:1px solid var(--border-strong);
+  }
+  .cta-outline:hover{
+    background:rgba(15,190,175,0.08);
+    box-shadow:none;
+  }
   .secondary-link{
-    display:block;margin-top:14px;
+    display:block;margin-top:16px;
     font-size:13px;color:var(--text-muted);
     transition:color 300ms var(--ease);
   }
   .secondary-link:hover{color:var(--accent)}
+
+  /* ---------- P1.3 — Logo strip ---------- */
+  #logo-strip{
+    padding:32px 0;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    background:rgba(17,31,58,0.6);
+  }
+  #logo-strip .strip-inner{
+    max-width:1100px;margin:0 auto;padding:0 32px;
+    display:flex;align-items:center;justify-content:center;
+    gap:40px;flex-wrap:wrap;
+  }
+  #logo-strip .strip-label{
+    font-size:11px;font-weight:700;text-transform:uppercase;
+    letter-spacing:2.5px;color:var(--text-muted);
+    opacity:0.55;white-space:nowrap;
+    transition:opacity 300ms var(--ease);
+  }
+  #logo-strip .strip-label:hover{opacity:0.85}
+  #logo-strip .strip-divider{
+    width:1px;height:16px;background:var(--border);flex-shrink:0;
+  }
 
   /* ---------- Story ---------- */
   #story .wrap{max-width:720px}
@@ -183,6 +237,12 @@
     margin:0 0 20px;
   }
   .chapter p em{font-style:italic;color:var(--text);font-weight:500}
+  .chapter .aside{
+    font-size:14px;color:var(--text-muted);font-style:italic;
+    border-left:2px solid var(--border-strong);
+    padding:10px 16px;margin:8px 0 24px;
+    line-height:1.7;
+  }
 
   .reveal{opacity:0;transform:translateY(20px);transition:opacity 400ms var(--ease),transform 400ms var(--ease)}
   .reveal.revealed{opacity:1;transform:none}
@@ -223,9 +283,9 @@
   .case.expanded .toggle{transform:rotate(180deg)}
   .case .case-body{
     max-height:0;overflow:hidden;
-    transition:max-height 400ms var(--ease), margin-top 300ms var(--ease);
+    transition:max-height 600ms var(--ease), margin-top 300ms var(--ease);
   }
-  .case.expanded .case-body{max-height:900px;margin-top:20px}
+  .case.expanded .case-body{max-height:1200px;margin-top:20px}
   .case-body .row{
     display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
     padding-top:20px;border-top:1px solid var(--border);
@@ -242,6 +302,106 @@
     border-bottom:1px solid transparent;transition:border-color 300ms var(--ease);
   }
   .case-body .source-link:hover{border-color:var(--accent)}
+
+  /* P0.2 — artifact figures */
+  .artifact{
+    margin-top:28px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+  }
+  .artifact figure{margin:0}
+  .artifact-wrap{position:relative;width:100%}
+  .artifact-wrap img{
+    display:none;
+    width:100%;
+    max-height:340px;
+    object-fit:cover;
+    border-radius:8px;
+    border:1px solid var(--border);
+  }
+  .artifact-ph{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:10px;
+    width:100%;
+    height:200px;
+    border-radius:8px;
+    border:1px dashed rgba(15,190,175,0.25);
+    background:rgba(10,22,40,0.5);
+    color:var(--text-muted);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    text-align:center;
+    padding:20px;
+  }
+  .artifact-ph .ph-icon{font-size:28px;opacity:0.4;margin-bottom:4px}
+  .artifact-dev{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:20px;
+    width:100%;
+    height:180px;
+    border-radius:8px;
+    border:1px dashed rgba(15,190,175,0.2);
+    background:rgba(10,22,40,0.5);
+  }
+  .artifact-dev .dev-label{
+    font-size:10px;text-transform:uppercase;letter-spacing:3px;
+    color:var(--text-muted);
+  }
+  .artifact-dev .dev-flow{
+    display:flex;align-items:center;gap:12px;
+  }
+  .artifact-dev .dev-node{
+    font-size:11px;font-weight:600;letter-spacing:.5px;
+    padding:6px 14px;border-radius:20px;
+    border:1px solid var(--border);
+    color:var(--text-muted);
+    background:var(--surface);
+  }
+  .artifact-dev .dev-node.hi{
+    border-color:var(--border-strong);
+    color:var(--accent);
+    background:rgba(15,190,175,0.08);
+  }
+  .artifact-dev .dev-arrow{color:var(--border-strong);font-size:14px}
+  .artifact figcaption{
+    font-size:12px;color:var(--text-muted);
+    margin-top:10px;font-style:italic;text-align:center;
+    line-height:1.5;
+  }
+  /* Brand-logo variant (AmEx etc.) */
+  .artifact-brand-wrap{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    padding:28px 32px;
+    background:rgba(1,111,208,0.08);
+    border:1px solid rgba(1,111,208,0.25);
+    border-radius:8px;
+  }
+  .artifact-brand-logo{
+    width:96px;height:96px;
+    border-radius:8px;
+    flex-shrink:0;
+    box-shadow:0 4px 24px rgba(1,111,208,0.3);
+  }
+  .artifact-brand-meta{
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .artifact-brand-name{
+    font-size:20px;font-weight:700;color:var(--text);
+    letter-spacing:-.3px;
+  }
+  .artifact-brand-sub{
+    font-size:13px;color:var(--text-muted);
+    line-height:1.5;
+  }
 
   /* ---------- Credentials ---------- */
   .creds{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -269,6 +429,11 @@
     font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;
     border-top:1px solid var(--border);padding-top:12px;
   }
+  .cred-link{
+    display:inline-block;margin-top:10px;font-size:12px;color:var(--accent);
+    border-bottom:1px solid transparent;transition:border-color 300ms var(--ease);
+  }
+  .cred-link:hover{border-color:var(--accent)}
 
   /* ---------- Diary ---------- */
   .diary{column-count:3;column-gap:20px}
@@ -290,6 +455,22 @@
   }
   .postcard p{font-size:14px;color:var(--text-secondary);line-height:1.7;margin:0}
   .postcard p em{font-style:italic;color:var(--text)}
+  .postcard.hidden{display:none}
+
+  /* P1.5 — show-more diary button */
+  .diary-more{
+    display:block;margin:4px auto 0;
+    background:transparent;
+    border:1px solid var(--border);
+    color:var(--text-muted);
+    font-size:13px;font-weight:500;
+    padding:10px 28px;border-radius:8px;
+    cursor:pointer;
+    font-family:inherit;
+    letter-spacing:.3px;
+    transition:color 300ms var(--ease),border-color 300ms var(--ease),background 300ms var(--ease);
+  }
+  .diary-more:hover{color:var(--text);border-color:var(--border-strong);background:rgba(15,190,175,0.04)}
 
   /* ---------- Contact ---------- */
   #contact{background:var(--surface);padding:120px 0;text-align:center}
@@ -299,7 +480,12 @@
   }
   #contact .body{
     font-size:18px;color:var(--text-secondary);max-width:520px;
-    margin:0 auto 40px;line-height:1.7;
+    margin:0 auto 16px;line-height:1.7;
+  }
+  .availability{
+    font-size:13px;color:var(--text-muted);
+    margin:0 auto 36px;
+    letter-spacing:.3px;
   }
   .links-row{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
   .link-btn{
@@ -312,13 +498,14 @@
   .link-btn.primary:hover{background:#1ad8c8;transform:translateY(-2px)}
   .link-btn.secondary{background:var(--surface-2);color:var(--text-secondary);border:1px solid var(--border)}
   .link-btn.secondary:hover{color:var(--text);transform:translateY(-2px);border-color:var(--border-strong)}
-  .link-btn.gold{background:var(--surface-2);color:var(--gold);border:1px solid rgba(229,184,11,0.25)}
-  .link-btn.gold:hover{transform:translateY(-2px);border-color:rgba(229,184,11,0.6)}
 
   footer{
     font-size:12px;color:var(--text-muted);text-align:center;
     margin-top:60px;letter-spacing:.5px;
+    line-height:1.9;
   }
+  footer a{color:var(--text-muted);border-bottom:1px solid transparent;transition:color 300ms var(--ease),border-color 300ms var(--ease)}
+  footer a:hover{color:var(--accent);border-color:var(--accent)}
 
   /* ---------- Mobile ---------- */
   @media (max-width: 900px){
@@ -335,9 +522,9 @@
     .hamburger{display:block}
     section{padding:72px 0}
     #hero{padding-top:120px;min-height:auto}
-    .pipeline svg{height:140px}
     h1.name{font-size:42px;letter-spacing:-1.5px}
     .hero-sub{font-size:17px}
+    .hero-position{font-size:15px;padding:12px 16px}
     .hero-descriptor{font-size:15px}
     .stats{flex-direction:column;gap:24px}
     .stat + .stat::before{display:none}
@@ -351,6 +538,12 @@
     .links-row{flex-direction:column;align-items:stretch}
     .link-btn{justify-content:center}
     #contact h2{font-size:34px}
+    #logo-strip .strip-inner{gap:24px}
+    #logo-strip .strip-divider{display:none}
+  }
+  @media (max-width: 600px){
+    .pipeline{display:none}
+    #hero{padding-top:100px}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -367,16 +560,17 @@
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
+<!-- ============ NAV — P0.1: Work before Story; P0.5: Résumé link ============ -->
 <nav class="top" aria-label="Primary">
   <div class="inner">
     <a href="#hero" class="brand">SJ</a>
     <div class="nav-links">
-      <a href="#story" data-nav="story">Story</a>
       <a href="#case-studies" data-nav="case-studies">Work</a>
+      <a href="#story" data-nav="story">Story</a>
       <a href="#credentials" data-nav="credentials">Credentials</a>
       <a href="#diary" data-nav="diary">Diary</a>
       <a href="#contact" data-nav="contact">Contact</a>
+      <a href="resume.pdf" target="_blank" rel="noopener" class="nav-resume">R&eacute;sum&eacute; &darr;</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Open menu">&#9776;</button>
   </div>
@@ -384,11 +578,12 @@
 
 <div class="mobile-nav" id="mobileNav" aria-hidden="true">
   <button class="close" id="mobileClose" aria-label="Close menu">&times;</button>
-  <a href="#story">Story</a>
   <a href="#case-studies">Work</a>
+  <a href="#story">Story</a>
   <a href="#credentials">Credentials</a>
   <a href="#diary">Diary</a>
   <a href="#contact">Contact</a>
+  <a href="resume.pdf" target="_blank" rel="noopener" class="mobile-resume">R&eacute;sum&eacute; &darr;</a>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -429,88 +624,62 @@
     <div class="hero-content">
       <h1 class="name">Satvik Jain</h1>
       <p class="hero-sub">Product Manager &middot; IIT Delhi</p>
+
+      <!-- P1.1 — scannable positioning line -->
+      <p class="hero-position">
+        I ship product into high-stakes ambiguity &mdash; solo PM on a 100M-account risk
+        platform, the insight layer on a $32M government deal, ranked #1 product analyst
+        globally at Sprinklr.
+      </p>
+
       <p class="hero-descriptor">
         I turn messy, ambiguous problems into products people actually use &mdash;
         by going deep on the data, earning trust with the room,
         and shipping before I ask for the title.
       </p>
 
+      <!-- P1.2 — outcome-framed stats -->
       <div class="stats">
         <div class="stat">
-          <div class="stat-num">4+ yrs</div>
-          <div class="stat-label">building</div>
+          <div class="stat-num">100M+</div>
+          <div class="stat-label">accounts on a platform I owned solo</div>
         </div>
         <div class="stat">
-          <div class="stat-num">$32M+</div>
-          <div class="stat-label">in deals shaped</div>
+          <div class="stat-num">$32M</div>
+          <div class="stat-label">largest deal in Sprinklr history</div>
         </div>
         <div class="stat">
-          <div class="stat-num">60+</div>
-          <div class="stat-label">features as sole PM</div>
+          <div class="stat-num">78&rarr;53</div>
+          <div class="stat-label">Qatar&rsquo;s national e-gov rank, in months</div>
         </div>
       </div>
 
-      <a href="#case-studies" class="cta">See the work &#8595;</a>
-      <a href="#story" class="secondary-link">&#8595; Or read the story first</a>
+      <!-- P0.5 — dual CTAs -->
+      <div class="hero-ctas">
+        <a href="#case-studies" class="cta">See the work &darr;</a>
+        <a href="resume.pdf" target="_blank" rel="noopener" class="cta cta-outline">Download r&eacute;sum&eacute; (PDF)</a>
+      </div>
+      <a href="#story" class="secondary-link">&darr; Or read the story first</a>
     </div>
   </div>
 </section>
 
-<!-- ============ STORY ============ -->
-<section id="story">
-  <div class="wrap">
-    <p class="section-label reveal"><span class="bar"></span>The Story</p>
-
-    <article class="chapter reveal">
-      <div class="chapter-num">Chapter 01</div>
-      <h2 class="chapter-title">The Foundation</h2>
-      <p>My father died when I was 11.</p>
-      <p>I'm not starting here for sympathy. I'm starting here because it's the most honest explanation for how I operate. When something important breaks, you figure out who's responsible &mdash; and you become that person.</p>
-      <p>My family didn't fall apart. It held. My mother worked. My sister studied. And I watched, very closely, how systems either support people during hard moments or quietly fail them.</p>
-      <p>That question &mdash; <em>why do some systems work and others collapse</em> &mdash; became the lens I've used to look at every problem since.</p>
-    </article>
-
-    <article class="chapter reveal">
-      <div class="chapter-num">Chapter 02</div>
-      <h2 class="chapter-title">The Theory vs. Practice Problem</h2>
-      <p>IIT Delhi was academically hard for me. I graduated with a 6.43 CGPA in Civil Engineering &mdash; not a number I hide.</p>
-      <p>What I can also tell you: I scored 10/10 in every single practical lab I ever sat in. That gap wasn't about intelligence. It was about how I learn. I don't absorb things from textbooks. I absorb them by doing. When the problem is real and the stakes are present, something shifts.</p>
-      <p>This pattern has followed me everywhere. The Sprinklr Gold Medal. The AmEx roadmap built from scratch. LinkRight, shipped while holding a full-time job. The fastest I've ever grown is when the problem is slightly too large for me and I have to figure it out on the way.</p>
-    </article>
-
-    <article class="chapter reveal">
-      <div class="chapter-num">Chapter 03</div>
-      <h2 class="chapter-title">The Gold Medal Nobody Saw Coming</h2>
-      <p>Six months into my first real job, my director put my name on a slide in a global all-hands meeting.</p>
-      <p>Number one. Out of every product analyst at Sprinklr worldwide. 10/10 customer satisfaction.</p>
-      <p>I wasn't chasing a medal. I was just trying not to drown in my first enterprise engagement. The award mattered less than what it proved to me: that when I'm in an environment where I can apply what I know <em>practically</em>, I operate at a very high level.</p>
-      <p>What followed was the biggest deal Sprinklr had ever signed &mdash; a $32 million engagement with the Government of Qatar. Forty ministries. Citizens interacting with public services. Arabic-language dashboards for the Prime Minister's office. And a Black Friday night at Walmart, pulling live data insights in real time for a room full of VPs.</p>
-      <p>The best products are built by people who stay in the room when it gets messy, not just when it's clean.</p>
-    </article>
-
-    <article class="chapter reveal">
-      <div class="chapter-num">Chapter 04</div>
-      <h2 class="chapter-title">Solo Ownership</h2>
-      <p>When I joined American Express in 2024, I was the only product manager on my team.</p>
-      <p>No one above me. An 18-person engineering team that needed direction. A document with 21 requirements and no roadmap.</p>
-      <p>I spent the first few weeks talking to compliance analysts across 6 global regions &mdash; understanding what people actually needed before I touched any plan. By week 6, I had a 3-year roadmap. By week 8, the SVP of Risk Management gave me an award for it. I hadn't shipped a single feature yet.</p>
-      <p>Then I ran 10 consecutive sprints. Alone. And then, twice in the same year, the strategy changed completely. Both times, the team was watching how I'd respond. Both times, we were back in motion within a week.</p>
-      <p>The value of a product manager is directly proportional to how fast they can reorient <em>without losing the team</em>.</p>
-    </article>
-
-    <article class="chapter reveal">
-      <div class="chapter-num">Chapter 05</div>
-      <h2 class="chapter-title">Building Things That Matter</h2>
-      <p>LinkRight started as a tool I built for myself. I was running a job search and the AI tools available were making me sound like someone I wasn't. Polished. Inflated. Unrecognizable.</p>
-      <p>Before writing a single line of code, I spent months talking to 147 people and reaching out to over 7,000 more to understand whether this problem was uniquely mine. It wasn't.</p>
-      <p>I'm still building it, while holding my AmEx role full-time.</p>
-      <p>But the thing that means most to me this year isn't a product. It's the colleague who came to stay with me after a layoff. We ran 15 to 20 mock interview sessions together over 3 months. He secured a product role without a single day of unemployment.</p>
-      <p>Building something is great. Watching someone go from zero confidence to performing at their ceiling is a different kind of impact entirely.</p>
-    </article>
+<!-- ============ P1.3 — LOGO STRIP ============ -->
+<div id="logo-strip" aria-label="Experience">
+  <div class="strip-inner">
+    <span class="strip-label">Sprinklr</span>
+    <div class="strip-divider"></div>
+    <span class="strip-label">American Express</span>
+    <div class="strip-divider"></div>
+    <span class="strip-label">Walmart</span>
+    <div class="strip-divider"></div>
+    <span class="strip-label">Government of Qatar</span>
+    <div class="strip-divider"></div>
+    <span class="strip-label">IIT Delhi</span>
   </div>
-</section>
+</div>
 
-<!-- ============ CASE STUDIES ============ -->
+<!-- ============ CASE STUDIES — P0.1: moved above Story ============ -->
 <section id="case-studies">
   <div class="wrap">
     <p class="section-label reveal"><span class="bar"></span>The Work</p>
@@ -518,10 +687,11 @@
 
     <div class="cases" id="cases">
 
+      <!-- Qatar -->
       <article class="case reveal" data-card>
-        <div class="case-tag">Enterprise &middot; $32M</div>
-        <h3 class="case-name">Qatar Citizen Experience Platform</h3>
-        <p class="case-summary">Built real-time Arabic dashboards for 40 government ministries.</p>
+        <div class="case-tag">Enterprise &middot; $32M &middot; Sharek Platform</div>
+        <h3 class="case-name">Qatar Sharek Platform &mdash; Citizen Experience</h3>
+        <p class="case-summary">Built the insight layer for Sharek &mdash; Qatar&rsquo;s national unified citizen experience platform, powered by Sprinklr + Azure OpenAI.</p>
         <div class="case-foot"><span class="toggle">&#8595;</span></div>
         <div class="case-body">
           <div class="row">
@@ -531,17 +701,35 @@
             </div>
             <div>
               <h4>What I did</h4>
-              <p>Led the insights product layer for Sprinklr's largest-ever deal. Built Arabic-language dashboards for the Prime Minister's office. Scaled the delivery team from <span class="num">6 to 14</span> people and reviewed <span class="num">120 dashboards</span> in 4 weeks.</p>
+              <p>Led the insights product layer for Sprinklr&rsquo;s largest-ever deal &mdash; the Sharek platform, the <span class="num">first unified citizen experience platform in the region</span>, hosted in Microsoft&rsquo;s Qatar Cloud. Built Arabic-language dashboards for the Prime Minister&rsquo;s office. Scaled the delivery team from <span class="num">6 to 14</span> and reviewed <span class="num">120 dashboards</span> in 4 weeks.</p>
             </div>
             <div>
               <h4>What changed</h4>
-              <p>Time to insight dropped from <span class="num">2 days to 2 hours</span>. Qatar's UN e-government ranking moved from <span class="num">78th to 53rd</span> &mdash; a 25-position jump.</p>
-              <a class="source-link" href="https://www.sprinklr.com/newsroom/the-state-of-qatar-debuts-unified-citizen-experience-management-platform/" target="_blank" rel="noopener">&#8599; Official press release</a>
+              <p>Time to insight dropped from <span class="num">2 days to 2 hours</span>. Qatar&rsquo;s UN e-government ranking moved from <span class="num">78th to 53rd</span> &mdash; a 25-position jump. Microsoft and Sprinklr later signed an MoU to add GPT capabilities via Azure OpenAI.</p>
+              <a class="source-link" href="https://www.sprinklr.com/newsroom/the-state-of-qatar-debuts-unified-citizen-experience-management-platform/" target="_blank" rel="noopener">&#8599; Sprinklr press release</a>
+              <a class="source-link" href="https://news.microsoft.com/en-xm/2023/06/22/civil-service-and-government-development-bureau-to-add-gpt-capabilities-of-microsoft-azure-openai-service-to-advance-its-sprinklr-powered-sharek-platform/" target="_blank" rel="noopener" style="display:block;margin-top:6px">&#8599; Microsoft &times; Azure OpenAI MoU</a>
             </div>
+          </div>
+          <!-- P0.2 — artifact -->
+          <div class="artifact">
+            <figure>
+              <div class="artifact-wrap">
+                <div class="artifact-ph">
+                  <span class="ph-icon">&#9783;</span>
+                  Signing ceremony photo &mdash; add qatar_sharek_signing.jpg
+                </div>
+                <img src="assets/artifacts/qatar_sharek_signing.jpg"
+                     alt="Microsoft &times; Sprinklr &times; Qatar Civil Service Bureau &mdash; Sharek Platform signing, June 2023"
+                     loading="lazy"
+                     onload="this.previousElementSibling.style.display='none';this.style.display='block'" />
+              </div>
+              <figcaption>Microsoft &times; Sprinklr &times; Qatar Civil Service Bureau &middot; Sharek Platform signing &middot; June 2023</figcaption>
+            </figure>
           </div>
         </div>
       </article>
 
+      <!-- Walmart -->
       <article class="case reveal" data-card>
         <div class="case-tag">GenAI &middot; Analytics</div>
         <h3 class="case-name">Walmart Spark Driver Root Cause Analysis</h3>
@@ -551,20 +739,38 @@
           <div class="row">
             <div>
               <h4>The problem</h4>
-              <p>Walmart's gig driver platform was losing most of its drivers within <span class="num">2 months</span>. Over <span class="num">100,000</span> monthly support cases. Data scattered across <span class="num">6</span> completely different sources with no unified picture.</p>
+              <p>Walmart&rsquo;s gig driver platform was losing most of its drivers within <span class="num">2 months</span>. Over <span class="num">100,000</span> monthly support cases. Data scattered across <span class="num">6</span> completely different sources with no unified picture.</p>
             </div>
             <div>
               <h4>What I did</h4>
-              <p>Designed and built a root cause product that unified all 6 data sources and used machine learning to automatically surface the patterns behind driver churn. Led daily cross-functional work and weekly updates to Walmart's VP of Product.</p>
+              <p>Designed and built a root cause product that unified all 6 data sources and used machine learning to automatically surface the patterns behind driver churn. Led daily cross-functional work and weekly updates to Walmart&rsquo;s VP of Product.</p>
             </div>
             <div>
               <h4>What changed</h4>
               <p>Time to insight went from <span class="num">7 days to same-day</span>. The pilot converted to a <span class="num">$1.2M deal</span> with <span class="num">$9M+</span> in follow-on pipeline.</p>
+              <a class="source-link" href="https://youtu.be/Lzx6c835UCA" target="_blank" rel="noopener">&#8599; Platform walkthrough</a>
             </div>
+          </div>
+          <!-- P0.2 — artifact -->
+          <div class="artifact">
+            <figure>
+              <div class="artifact-wrap">
+                <div class="artifact-ph">
+                  <span class="ph-icon">&#9783;</span>
+                  RCA tool screenshot &mdash; add walmart_rca_tool.jpg
+                </div>
+                <img src="assets/artifacts/walmart_rca_tool.jpg"
+                     alt="Walmart Spark driver root cause analysis platform &mdash; live dashboard"
+                     loading="lazy"
+                     onload="this.previousElementSibling.style.display='none';this.style.display='block'" />
+              </div>
+              <figcaption>Walmart Spark RCA platform &middot; Black Friday 2023 &middot; 10 VPs watching live &middot; same-day insight</figcaption>
+            </figure>
           </div>
         </div>
       </article>
 
+      <!-- AmEx -->
       <article class="case reveal" data-card>
         <div class="case-tag">Fintech &middot; Solo PM</div>
         <h3 class="case-name">American Express Customer Risk Rating Platform</h3>
@@ -574,7 +780,7 @@
           <div class="row">
             <div>
               <h4>The problem</h4>
-              <p>AmEx needed to rebuild the system that determines the risk profile of every customer &mdash; <span class="num">100 million+</span> accounts across <span class="num">40+ markets</span>. The platform hadn't been properly updated in years.</p>
+              <p>AmEx needed to rebuild the system that determines the risk profile of every customer &mdash; <span class="num">100 million+</span> accounts across <span class="num">40+ markets</span>. The platform hadn&rsquo;t been properly updated in years.</p>
             </div>
             <div>
               <h4>What I did</h4>
@@ -582,12 +788,28 @@
             </div>
             <div>
               <h4>What changed</h4>
-              <p>Risk configuration that used to take <span class="num">10 days now takes 3</span>. Received the <span class="num">highest performance rating</span> among all Band 30 Product Owners in my VP's organization. <span class="num">120% bonus</span>.</p>
+              <p>Risk configuration that used to take <span class="num">10 days now takes 3</span>. Received the <span class="num">highest performance rating</span> among all Band 30 Product Owners in my VP&rsquo;s organization. <span class="num">120% bonus</span>.</p>
             </div>
+          </div>
+          <!-- P0.2 — AmEx logo artifact -->
+          <div class="artifact">
+            <figure>
+              <div class="artifact-brand-wrap">
+                <img src="assets/brands/amex_logo.svg"
+                     alt="American Express"
+                     class="artifact-brand-logo" />
+                <div class="artifact-brand-meta">
+                  <span class="artifact-brand-name">American Express</span>
+                  <span class="artifact-brand-sub">Customer Risk Rating Engine &middot; 100M+ accounts &middot; 40+ markets</span>
+                </div>
+              </div>
+              <figcaption>CRR Engine Modernization &middot; GCIP &middot; solo PM &middot; 10 sprints &middot; highest Band 30 rating</figcaption>
+            </figure>
           </div>
         </div>
       </article>
 
+      <!-- LinkRight -->
       <article class="case reveal" data-card>
         <div class="case-tag">AI &middot; Solo build &middot; Live</div>
         <h3 class="case-name">LinkRight &mdash; Career Navigation Platform</h3>
@@ -606,12 +828,31 @@
             <div>
               <h4>Where it is</h4>
               <p><span class="num">44 features shipped</span>, published to PyPI. Still building.</p>
-              <a class="source-link" href="https://github.com/satvik-jain-iitd" target="_blank" rel="noopener">&#8599; pip install linkright</a>
+              <a class="source-link" href="https://github.com/satvik-jain-iitd/linkright" target="_blank" rel="noopener">&#8599; pip install linkright</a>
+              <!-- P1.4 — published PRD proof -->
+              <a class="source-link" href="https://www.councilonsustainabledevelopment.org/post/horizon-a-gamified-stock-market-app-for-new-retail-investors" target="_blank" rel="noopener" style="display:block;margin-top:8px">&#8599; Published PM doc &mdash; Horizon PRD</a>
             </div>
+          </div>
+          <!-- P0.2 — artifact -->
+          <div class="artifact">
+            <figure>
+              <div class="artifact-wrap">
+                <div class="artifact-ph">
+                  <span class="ph-icon">&#9783;</span>
+                  App screenshot &mdash; dropping image here
+                </div>
+                <img src="assets/artifacts/linkright_app.png"
+                     alt="LinkRight career navigation platform"
+                     loading="lazy"
+                     onload="this.previousElementSibling.style.display='none';this.style.display='block'" />
+              </div>
+              <figcaption>LinkRight &middot; 16-dimension evaluation framework &middot; 44 features &middot; live on PyPI</figcaption>
+            </figure>
           </div>
         </div>
       </article>
 
+      <!-- AutoFlow -->
       <article class="case reveal" data-card>
         <div class="case-tag">AI &middot; Automation &middot; In Progress</div>
         <h3 class="case-name">AutoFlow &mdash; Automation That Builds Automations</h3>
@@ -621,10 +862,10 @@
           <div class="row">
             <div>
               <h4>The problem</h4>
-              <p>Building automations is still too technical for most people. You need to know the tool, think in logic flows, and map triggers before you've even started. Most people give up.</p>
+              <p>Building automations is still too technical for most people. You need to know the tool, think in logic flows, and map triggers before you&rsquo;ve even started. Most people give up.</p>
             </div>
             <div>
-              <h4>What I'm building</h4>
+              <h4>What I&rsquo;m building</h4>
               <p>An AI-powered system that takes a plain-English description of what you want automated &mdash; and generates the workflow. You describe the outcome; AutoFlow designs the logic and builds the steps.</p>
             </div>
             <div>
@@ -633,9 +874,28 @@
               <p><span class="num">Status:</span> In active development.</p>
             </div>
           </div>
+          <!-- P0.2 — styled "in development" diagram -->
+          <div class="artifact">
+            <figure>
+              <div class="artifact-dev">
+                <span class="dev-label">System architecture &middot; in development</span>
+                <div class="dev-flow">
+                  <div class="dev-node">Plain English</div>
+                  <div class="dev-arrow">&#8594;</div>
+                  <div class="dev-node hi">AI Engine</div>
+                  <div class="dev-arrow">&#8594;</div>
+                  <div class="dev-node">Workflow</div>
+                  <div class="dev-arrow">&#8594;</div>
+                  <div class="dev-node">Deployed</div>
+                </div>
+              </div>
+              <figcaption>AutoFlow &middot; natural language &rarr; generated automation &middot; active development</figcaption>
+            </figure>
+          </div>
         </div>
       </article>
 
+      <!-- Miraya -->
       <article class="case reveal" data-card>
         <div class="case-tag">Automation &middot; Advisory &middot; In Progress</div>
         <h3 class="case-name">Miraya Media House &mdash; Automation Pipeline</h3>
@@ -648,19 +908,88 @@
               <p>Miraya Media House is a growing influencer marketing agency. As campaign volume scales, the operational load grows faster than the team &mdash; outreach, tracking, reporting, follow-ups, all manual.</p>
             </div>
             <div>
-              <h4>What I'm doing</h4>
+              <h4>What I&rsquo;m doing</h4>
               <p>Designing and building their end-to-end automation pipeline as a product advisor &mdash; from creator outreach sequences to campaign performance reporting. The goal: let a small team run at <span class="num">3&times;</span> the volume.</p>
             </div>
             <div>
               <h4>Why this</h4>
-              <p>I've built automation pipelines before and I know how to design them as products &mdash; not just scripts that break. Miraya needed someone who could think about the system, not just the tool.</p>
+              <p>I&rsquo;ve built automation pipelines before and I know how to design them as products &mdash; not just scripts that break. Miraya needed someone who could think about the system, not just the tool.</p>
               <p><span class="num">Status:</span> In active development.</p>
             </div>
+          </div>
+          <!-- P0.2 — styled "in development" diagram -->
+          <div class="artifact">
+            <figure>
+              <div class="artifact-dev">
+                <span class="dev-label">Pipeline architecture &middot; in development</span>
+                <div class="dev-flow">
+                  <div class="dev-node">Creator Outreach</div>
+                  <div class="dev-arrow">&#8594;</div>
+                  <div class="dev-node hi">Campaign Tracking</div>
+                  <div class="dev-arrow">&#8594;</div>
+                  <div class="dev-node">Reporting</div>
+                </div>
+              </div>
+              <figcaption>Miraya Media House &middot; end-to-end automation &middot; 3&times; throughput goal</figcaption>
+            </figure>
           </div>
         </div>
       </article>
 
     </div>
+  </div>
+</section>
+
+<!-- ============ STORY — P0.1: moved below Work ============ -->
+<section id="story">
+  <div class="wrap">
+    <p class="section-label reveal"><span class="bar"></span>The Story</p>
+
+    <!--
+      P0.3 / P0.4: Chapter 01 is now Theory vs Practice (professional insight first).
+      GPA line removed. Father-death beat folded into Chapter 02 as a ≤2-sentence aside.
+    -->
+    <article class="chapter reveal">
+      <div class="chapter-num">Chapter 01</div>
+      <h2 class="chapter-title">The Theory vs. Practice Problem</h2>
+      <p>IIT Delhi was academically hard for me. Not because I lack the horsepower &mdash; because I learn by doing, not from textbooks. I scored 10/10 in every single practical lab I ever sat in.</p>
+      <p>That gap &mdash; between knowing something and being able to apply it under real conditions &mdash; became the most useful thing I learned at IIT. It&rsquo;s the reason I&rsquo;ve never been intimidated by a problem I hadn&rsquo;t solved before.</p>
+      <p>This pattern has followed me everywhere. The Sprinklr Gold Medal. The AmEx roadmap built from scratch. LinkRight, shipped while holding a full-time job. The fastest I&rsquo;ve ever grown is when the problem is slightly too large for me and I have to figure it out on the way.</p>
+    </article>
+
+    <article class="chapter reveal">
+      <div class="chapter-num">Chapter 02</div>
+      <h2 class="chapter-title">The Gold Medal Nobody Saw Coming</h2>
+
+      <!-- P0.4: father-death beat, trimmed to ≤2 sentences, repositioned as aside -->
+      <p class="aside">A note on why I operate this way: when I was 11, my father died, and I watched my family hold together because certain people refused to leave. That instinct &mdash; to stay accountable when things break &mdash; has followed me into every room since.</p>
+
+      <p>Six months into my first real job, my director put my name on a slide in a global all-hands meeting.</p>
+      <p>Number one. Out of every product analyst at Sprinklr worldwide. 10/10 customer satisfaction.</p>
+      <p>I wasn&rsquo;t chasing a medal. I was just trying not to drown in my first enterprise engagement. The award mattered less than what it proved to me: that when I&rsquo;m in an environment where I can apply what I know <em>practically</em>, I operate at a very high level.</p>
+      <p>What followed was the biggest deal Sprinklr had ever signed &mdash; a $32 million engagement with the Government of Qatar. Forty ministries. Citizens interacting with public services. Arabic-language dashboards for the Prime Minister&rsquo;s office. And a Black Friday night at Walmart, pulling live data insights in real time for a room full of VPs.</p>
+      <p>The best products are built by people who stay in the room when it gets messy, not just when it&rsquo;s clean.</p>
+    </article>
+
+    <article class="chapter reveal">
+      <div class="chapter-num">Chapter 03</div>
+      <h2 class="chapter-title">Solo Ownership</h2>
+      <p>When I joined American Express in 2024, I was the only product manager on my team.</p>
+      <p>No one above me. An 18-person engineering team that needed direction. A document with 21 requirements and no roadmap.</p>
+      <p>I spent the first few weeks talking to compliance analysts across 6 global regions &mdash; understanding what people actually needed before I touched any plan. By week 6, I had a 3-year roadmap. By week 8, the SVP of Risk Management gave me an award for it. I hadn&rsquo;t shipped a single feature yet.</p>
+      <p>Then I ran 10 consecutive sprints. Alone. And then, twice in the same year, the strategy changed completely. Both times, the team was watching how I&rsquo;d respond. Both times, we were back in motion within a week.</p>
+      <p>The value of a product manager is directly proportional to how fast they can reorient <em>without losing the team</em>.</p>
+    </article>
+
+    <article class="chapter reveal">
+      <div class="chapter-num">Chapter 04</div>
+      <h2 class="chapter-title">Building Things That Matter</h2>
+      <p>LinkRight started as a tool I built for myself. I was running a job search and the AI tools available were making me sound like someone I wasn&rsquo;t. Polished. Inflated. Unrecognizable.</p>
+      <p>Before writing a single line of code, I spent months talking to 147 people and reaching out to over 7,000 more to understand whether this problem was uniquely mine. It wasn&rsquo;t.</p>
+      <p>I&rsquo;m still building it, while holding my AmEx role full-time.</p>
+      <p>But the thing that means most to me this year isn&rsquo;t a product. It&rsquo;s the colleague who came to stay with me after a layoff. We ran 15 to 20 mock interview sessions together over 3 months. He secured a product role without a single day of unemployment.</p>
+      <p>Building something is great. Watching someone go from zero confidence to performing at their ceiling is a different kind of impact entirely.</p>
+    </article>
   </div>
 </section>
 
@@ -681,6 +1010,7 @@
         <p class="cred-detail">For CRR Engine Modernization &mdash; GCIP.</p>
       </article>
 
+      <!-- P1.4: Horizon PRD link lives here (GGI fellowship project) -->
       <article class="cred reveal">
         <div class="img-wrap">
           <img src="assets/credentials/ggi_fellowship_letter.png" alt="GGI Fellow 2024 Graduation Letter" onerror="this.parentElement.innerHTML='&lt;div class=ph&gt;GGI Fellow 2024&lt;/div&gt;'" />
@@ -688,7 +1018,8 @@
         <h3 class="cred-name">GGI Fellow 2024</h3>
         <p class="cred-issuer">Global Governance Initiative &middot; Impact Fellowship</p>
         <p class="cred-date">2024</p>
-        <p class="cred-detail">Competitive pre-MBA program. Consulting projects, stress interviews, mentor-led learning.</p>
+        <p class="cred-detail">Competitive pre-MBA program. Consulting projects, stress interviews, mentor-led learning. Impact Lab: digital transformation for Sukha Education, Chennai.</p>
+        <a class="cred-link" href="https://www.councilonsustainabledevelopment.org/post/horizon-a-gamified-stock-market-app-for-new-retail-investors" target="_blank" rel="noopener">&#8599; Published PRD &mdash; Horizon</a>
       </article>
 
       <article class="cred reveal">
@@ -704,119 +1035,129 @@
   </div>
 </section>
 
-<!-- ============ DIARY ============ -->
+<!-- ============ DIARY — P1.5: 6 visible + show more ============ -->
 <section id="diary">
   <div class="wrap">
     <p class="section-label reveal"><span class="bar"></span>Build Diary</p>
     <p class="section-sub reveal">Not every milestone. The ones that changed something.</p>
 
-    <div class="diary">
+    <div class="diary" id="diary">
 
-      <article class="postcard reveal">
-        <div class="pc-date">Nov 2022</div>
-        <h3 class="pc-title">The Gold Medal Nobody Expected</h3>
-        <p>Six months in, my director put my name on a slide in a global all-hands meeting. Number one globally. 10/10 customer satisfaction. I remember thinking: <em>maybe I'm better at this than I thought.</em> That was the first time in years I let myself believe it.</p>
-      </article>
-
+      <!-- 6 visible by default -->
       <article class="postcard reveal">
         <div class="pc-date">Jan 2023</div>
         <h3 class="pc-title">Midnight in Doha</h3>
-        <p>The Qatar project was 40 ministries, all in Arabic, all live. Four weeks, 120 dashboards, 14 people. The moment I realized the Prime Minister's office would use this to make decisions about citizens &mdash; that there was no draft &mdash; changed how I approach every project since.</p>
-      </article>
-
-      <article class="postcard reveal">
-        <div class="pc-date">Nov 2023</div>
-        <h3 class="pc-title">Walmart, Black Friday, Real-Time</h3>
-        <p>10 VPs watching a live system. The machine was ingesting data automatically. But someone had to translate what it meant in real time &mdash; what the driver churn patterns said, what to watch for. I was pulling screenshots and narrating live. No script. That's the part AI won't replace anytime soon.</p>
-      </article>
-
-      <article class="postcard reveal">
-        <div class="pc-date">Feb 2024</div>
-        <h3 class="pc-title">The Invite That Changed Everything</h3>
-        <p>Anish Singhal, VP of Product at Sprinklr, scheduled a call with me. He asked if I wanted to join his product team. I'd been running the project like a PM without the title. He saw it. The formal transition happened because the work spoke first. I try to remember that every time I'm tempted to ask for recognition before I've earned it.</p>
+        <p>The Qatar project was 40 ministries, all in Arabic, all live. Four weeks, 120 dashboards, 14 people. The moment I realized the Prime Minister&rsquo;s office would use this to make decisions about citizens &mdash; that there was no draft &mdash; changed how I approach every project since.</p>
       </article>
 
       <article class="postcard reveal">
         <div class="pc-date">Sep 2024</div>
         <h3 class="pc-title">An Award Before I Shipped Anything</h3>
-        <p>Three weeks at AmEx. No roadmap, a 21-requirement document, no structure. I spent my first weeks just listening. By week 6 I had a 3-year roadmap. By week 8 the SVP gave me a Leadership in Action Award. I hadn't shipped a single feature. Clarity, delivered early, is a product.</p>
-      </article>
-
-      <article class="postcard reveal">
-        <div class="pc-date">Oct 2024</div>
-        <h3 class="pc-title">GGI Fellowship &mdash; Graduated</h3>
-        <p>Completed the GGI Impact Fellowship &mdash; a competitive program with stress interviews, consulting-style projects, and mentors from top consulting firms. My Impact Lab project was a digital transformation for Sukha Education, an NGO in Chennai. The consulting toolkit and the PM toolkit are more similar than most people think.</p>
-      </article>
-
-      <article class="postcard reveal">
-        <div class="pc-date">2024</div>
-        <h3 class="pc-title">1st Place, GTI Startup Weekend</h3>
-        <p>Competed against teams across disciplines. Our team placed first. The experience reinforced something I keep relearning: the best pitch is a crisp problem statement and a solution that's actually simpler than people expect.</p>
+        <p>Three weeks at AmEx. No roadmap, a 21-requirement document, no structure. I spent my first weeks just listening. By week 6 I had a 3-year roadmap. By week 8 the SVP gave me a Leadership in Action Award. I hadn&rsquo;t shipped a single feature. Clarity, delivered early, is a product.</p>
       </article>
 
       <article class="postcard reveal">
         <div class="pc-date">Dec 2024</div>
         <h3 class="pc-title">The Week the Strategy Changed</h3>
-        <p>We were weeks from production. The data team couldn't deliver. Leadership paused everything. 18-person team. 18-month build. Paused. I had 3 days to redirect the energy in the room. I turned the pause into a project &mdash; mapped the problem from scratch, scoped a solution. That project is still running today. Sometimes the pivot <em>is</em> the product.</p>
-      </article>
-
-      <article class="postcard reveal">
-        <div class="pc-date">Jan 2025</div>
-        <h3 class="pc-title">Rank 21 of 400 Teams</h3>
-        <p>24-hour hackathon at AmEx. We built a bot that auto-drafts user stories from requirements. Ranked 21st out of 400+ teams. The company later productionized the concept. The best ideas are usually the simplest ones.</p>
+        <p>We were weeks from production. The data team couldn&rsquo;t deliver. Leadership paused everything. 18-person team. 18-month build. Paused. I had 3 days to redirect the energy in the room. I turned the pause into a project &mdash; mapped the problem from scratch, scoped a solution. That project is still running today. Sometimes the pivot <em>is</em> the product.</p>
       </article>
 
       <article class="postcard reveal">
         <div class="pc-date">Mar 2025</div>
         <h3 class="pc-title">147 People Said Yes Before Line 1 of Code</h3>
-        <p>I ran a survey before building LinkRight. 147 responses. 7,000+ cold outreach. Every response was some version of: <em>the tools make me sound like someone I'm not.</em> That one sentence became the north star. Build the thing that lets people be themselves.</p>
+        <p>I ran a survey before building LinkRight. 147 responses. 7,000+ cold outreach. Every response was some version of: <em>the tools make me sound like someone I&rsquo;m not.</em> That one sentence became the north star. Build the thing that lets people be themselves.</p>
       </article>
 
       <article class="postcard reveal">
         <div class="pc-date">Jun 2025</div>
         <h3 class="pc-title">pip install linkright</h3>
-        <p>First time I ran it and it worked. Quieter than I expected &mdash; more like relief than celebration. The thing I'd built alone, across 11 months and 44 features, was now a package anyone could install. That's when I understood why people keep building even when it's hard.</p>
+        <p>First time I ran it and it worked. Quieter than I expected &mdash; more like relief than celebration. The thing I&rsquo;d built alone, across 11 months and 44 features, was now a package anyone could install. That&rsquo;s when I understood why people keep building even when it&rsquo;s hard.</p>
       </article>
 
       <article class="postcard reveal">
         <div class="pc-date">Jul 2025</div>
         <h3 class="pc-title">Zero Days Unemployed</h3>
-        <p>A junior colleague came to stay with me after a layoff. We ran 15&ndash;20 mock interview sessions over 3 months. He got a product role without a single day of unemployment. I've shipped a lot of things. That one still means the most.</p>
+        <p>A junior colleague came to stay with me after a layoff. We ran 15&ndash;20 mock interview sessions over 3 months. He got a product role without a single day of unemployment. I&rsquo;ve shipped a lot of things. That one still means the most.</p>
       </article>
 
-      <article class="postcard reveal">
+      <!-- 8 additional entries behind "Show more" (toggled by JS) -->
+      <article class="postcard reveal hidden" data-extra>
+        <div class="pc-date">Nov 2022</div>
+        <h3 class="pc-title">The Gold Medal Nobody Expected</h3>
+        <p>Six months in, my director put my name on a slide in a global all-hands meeting. Number one globally. 10/10 customer satisfaction. I remember thinking: <em>maybe I&rsquo;m better at this than I thought.</em> That was the first time in years I let myself believe it.</p>
+      </article>
+
+      <article class="postcard reveal hidden" data-extra>
+        <div class="pc-date">Nov 2023</div>
+        <h3 class="pc-title">Walmart, Black Friday, Real-Time</h3>
+        <p>10 VPs watching a live system. The machine was ingesting data automatically. But someone had to translate what it meant in real time &mdash; what the driver churn patterns said, what to watch for. I was pulling screenshots and narrating live. No script. That&rsquo;s the part AI won&rsquo;t replace anytime soon.</p>
+      </article>
+
+      <article class="postcard reveal hidden" data-extra>
+        <div class="pc-date">Feb 2024</div>
+        <h3 class="pc-title">The Invite That Changed Everything</h3>
+        <p>Anish Singhal, VP of Product at Sprinklr, scheduled a call with me. He asked if I wanted to join his product team. I&rsquo;d been running the project like a PM without the title. He saw it. The formal transition happened because the work spoke first. I try to remember that every time I&rsquo;m tempted to ask for recognition before I&rsquo;ve earned it.</p>
+      </article>
+
+      <article class="postcard reveal hidden" data-extra>
+        <div class="pc-date">Oct 2024</div>
+        <h3 class="pc-title">GGI Fellowship &mdash; Graduated</h3>
+        <p>Completed the GGI Impact Fellowship &mdash; a competitive program with stress interviews, consulting-style projects, and mentors from top consulting firms. My Impact Lab project was a digital transformation for Sukha Education, an NGO in Chennai. The consulting toolkit and the PM toolkit are more similar than most people think.</p>
+      </article>
+
+      <article class="postcard reveal hidden" data-extra>
+        <div class="pc-date">2024</div>
+        <h3 class="pc-title">1st Place, GTI Startup Weekend</h3>
+        <p>Competed against teams across disciplines. Our team placed first. The experience reinforced something I keep relearning: the best pitch is a crisp problem statement and a solution that&rsquo;s actually simpler than people expect.</p>
+      </article>
+
+      <article class="postcard reveal hidden" data-extra>
+        <div class="pc-date">Jan 2025</div>
+        <h3 class="pc-title">Rank 21 of 400 Teams</h3>
+        <p>24-hour hackathon at AmEx. We built a bot that auto-drafts user stories from requirements. Ranked 21st out of 400+ teams. The company later productionized the concept. The best ideas are usually the simplest ones.</p>
+      </article>
+
+      <article class="postcard reveal hidden" data-extra>
         <div class="pc-date">2025&ndash;</div>
         <h3 class="pc-title">AutoFlow &mdash; Building the Builder</h3>
-        <p>I kept running into the same problem: people who wanted to automate things couldn't do it themselves, and couldn't afford someone to do it for them. The tool knowledge is a wall. AutoFlow is my attempt to take that wall down. Still building. The problem is real enough that I can't stop.</p>
+        <p>I kept running into the same problem: people who wanted to automate things couldn&rsquo;t do it themselves, and couldn&rsquo;t afford someone to do it for them. The tool knowledge is a wall. AutoFlow is my attempt to take that wall down. Still building. The problem is real enough that I can&rsquo;t stop.</p>
       </article>
 
-      <article class="postcard reveal">
+      <article class="postcard reveal hidden" data-extra>
         <div class="pc-date">2026</div>
         <h3 class="pc-title">Miraya Media House</h3>
-        <p>Friends run an influencer marketing agency &mdash; Miraya Media House. Good at what they do, drowning in ops. I'm building their automation backbone. It's a different kind of PM work &mdash; no sprint board, just a real business that needs the chaos removed. I find that just as interesting as anything I've done.</p>
+        <p>Friends run an influencer marketing agency &mdash; Miraya Media House. Good at what they do, drowning in ops. I&rsquo;m building their automation backbone. It&rsquo;s a different kind of PM work &mdash; no sprint board, just a real business that needs the chaos removed. I find that just as interesting as anything I&rsquo;ve done.</p>
       </article>
 
     </div>
+    <!-- P1.5: show-more inserted by JS -->
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
+<!-- ============ CONTACT — P2 ============ -->
 <section id="contact">
   <div class="wrap">
-    <p class="section-label reveal" style="text-align:center"><span class="bar"></span>What's Next</p>
-    <h2 class="reveal">Let's build something worth building.</h2>
+    <p class="section-label reveal" style="text-align:center"><span class="bar"></span>What&rsquo;s Next</p>
+    <h2 class="reveal">Let&rsquo;s build something worth building.</h2>
     <p class="body reveal">
-      I'm currently open to Senior PM and Lead PM roles at companies building
+      I&rsquo;m currently open to Senior PM and Lead PM roles at companies building
       things that matter &mdash; in AI, fintech, or anywhere the product problem is
-      genuinely hard. If that's you, I'd like to hear about it.
+      genuinely hard. If that&rsquo;s you, I&rsquo;d like to hear about it.
     </p>
+    <!-- P2: availability line — Satvik to confirm values in [] -->
+    <p class="availability reveal">Based in [City] &middot; Open to [remote / relocation] &middot; [Work authorization]</p>
     <div class="links-row reveal">
       <a class="link-btn primary" href="mailto:satvik.jain@iitdalumni.com">satvik.jain@iitdalumni.com</a>
       <a class="link-btn secondary" href="https://linkedin.com/in/satvik-jain-iitd" target="_blank" rel="noopener">LinkedIn &#8599;</a>
-      <a class="link-btn secondary" href="https://github.com/satvik-jain-iitd" target="_blank" rel="noopener">GitHub &#8599;</a>
-      <a class="link-btn gold" href="https://drive.google.com/drive/folders/1f8WyRNSA2u6x0BmSugD6U01G9yxWTtj-" target="_blank" rel="noopener">AI Songs &#8599;</a>
+      <!-- P2: GitHub points to LinkRight repo -->
+      <a class="link-btn secondary" href="https://github.com/satvik-jain-iitd/linkright" target="_blank" rel="noopener">GitHub &mdash; LinkRight &#8599;</a>
     </div>
-    <footer>Satvik Jain &middot; IIT Delhi &middot; Built with care &middot; 2026</footer>
+    <!-- P2: AI Songs moved here from contact buttons to footer -->
+    <footer>
+      Satvik Jain &middot; IIT Delhi &middot; Built with care &middot; 2026
+      &nbsp;&middot;&nbsp;
+      <a href="https://drive.google.com/drive/folders/1f8WyRNSA2u6x0BmSugD6U01G9yxWTtj-" target="_blank" rel="noopener">AI Songs &#8599;</a>
+    </footer>
   </div>
 </section>
 
@@ -847,9 +1188,9 @@
     });
   });
 
-  // -- Active nav link
+  // -- Active nav (P0.1: updated section order)
   (function(){
-    var sections = ['story','case-studies','credentials','diary','contact'];
+    var sections = ['case-studies','story','credentials','diary','contact'];
     var links = {};
     document.querySelectorAll('.nav-links a[data-nav]').forEach(function(a){
       links[a.getAttribute('data-nav')] = a;
@@ -881,6 +1222,25 @@
     burger && burger.addEventListener('click', open);
     close && close.addEventListener('click', shut);
     nav && nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click', shut);});
+  })();
+
+  // -- P1.5: Diary show-more
+  (function(){
+    var extras = document.querySelectorAll('[data-extra]');
+    if (!extras.length) return;
+    var btn = document.createElement('button');
+    btn.className = 'diary-more';
+    btn.textContent = 'Show ' + extras.length + ' more entries ↓';
+    var diary = document.getElementById('diary');
+    diary.parentNode.insertBefore(btn, diary.nextSibling);
+    btn.addEventListener('click', function(){
+      extras.forEach(function(c){ c.classList.remove('hidden'); });
+      btn.style.display = 'none';
+      // re-observe newly visible cards for scroll-reveal
+      extras.forEach(function(c){
+        if (!c.classList.contains('revealed')) c.classList.add('revealed');
+      });
+    });
   })();
 </script>
 
