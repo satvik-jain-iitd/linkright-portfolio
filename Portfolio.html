@@ -375,6 +375,33 @@
     margin-top:10px;font-style:italic;text-align:center;
     line-height:1.5;
   }
+  /* Brand-logo variant (AmEx etc.) */
+  .artifact-brand-wrap{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    padding:28px 32px;
+    background:rgba(1,111,208,0.08);
+    border:1px solid rgba(1,111,208,0.25);
+    border-radius:8px;
+  }
+  .artifact-brand-logo{
+    width:96px;height:96px;
+    border-radius:8px;
+    flex-shrink:0;
+    box-shadow:0 4px 24px rgba(1,111,208,0.3);
+  }
+  .artifact-brand-meta{
+    display:flex;flex-direction:column;gap:6px;
+  }
+  .artifact-brand-name{
+    font-size:20px;font-weight:700;color:var(--text);
+    letter-spacing:-.3px;
+  }
+  .artifact-brand-sub{
+    font-size:13px;color:var(--text-muted);
+    line-height:1.5;
+  }
 
   /* ---------- Credentials ---------- */
   .creds{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -764,20 +791,19 @@
               <p>Risk configuration that used to take <span class="num">10 days now takes 3</span>. Received the <span class="num">highest performance rating</span> among all Band 30 Product Owners in my VP&rsquo;s organization. <span class="num">120% bonus</span>.</p>
             </div>
           </div>
-          <!-- P0.2 — artifact -->
+          <!-- P0.2 — AmEx logo artifact -->
           <div class="artifact">
             <figure>
-              <div class="artifact-wrap">
-                <div class="artifact-ph">
-                  <span class="ph-icon">&#9783;</span>
-                  CRR platform interface &mdash; dropping image here
+              <div class="artifact-brand-wrap">
+                <img src="assets/brands/amex_logo.svg"
+                     alt="American Express"
+                     class="artifact-brand-logo" />
+                <div class="artifact-brand-meta">
+                  <span class="artifact-brand-name">American Express</span>
+                  <span class="artifact-brand-sub">Customer Risk Rating Engine &middot; 100M+ accounts &middot; 40+ markets</span>
                 </div>
-                <img src="assets/artifacts/amex_crr_platform.png"
-                     alt="AmEx CRR platform &mdash; risk configuration interface"
-                     loading="lazy"
-                     onload="this.previousElementSibling.style.display='none';this.style.display='block'" />
               </div>
-              <figcaption>CRR Engine &middot; risk configuration interface &middot; Figma &rarr; production &middot; 40+ markets</figcaption>
+              <figcaption>CRR Engine Modernization &middot; GCIP &middot; solo PM &middot; 10 sprints &middot; highest Band 30 rating</figcaption>
             </figure>
           </div>
         </div>

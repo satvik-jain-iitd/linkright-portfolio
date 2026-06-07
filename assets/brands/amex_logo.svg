@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="American Express">
+  <rect width="500" height="500" fill="#016FD0"/>
+  <!-- AM top -->
+  <text
+    x="250" y="242"
+    font-family="'Arial Black', Impact, 'Helvetica Neue', Arial, sans-serif"
+    font-weight="900"
+    font-size="196"
+    fill="white"
+    text-anchor="middle"
+    letter-spacing="-4"
+  >AM</text>
+  <!-- EX bottom -->
+  <text
+    x="250" y="436"
+    font-family="'Arial Black', Impact, 'Helvetica Neue', Arial, sans-serif"
+    font-weight="900"
+    font-size="196"
+    fill="white"
+    text-anchor="middle"
+    letter-spacing="-4"
+  >EX</text>
+</svg>
