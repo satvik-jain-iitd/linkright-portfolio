@@ -391,6 +391,15 @@
     flex-shrink:0;
     box-shadow:0 4px 24px rgba(1,111,208,0.3);
   }
+  .artifact-brand-logo--wide{
+    width:auto;max-width:180px;height:72px;
+    object-fit:contain;border-radius:0;
+    box-shadow:none;
+  }
+  .artifact-brand-wrap--teal{
+    background:rgba(15,190,175,0.08);
+    border-color:rgba(15,190,175,0.25);
+  }
   .artifact-brand-meta{
     display:flex;flex-direction:column;gap:6px;
   }
@@ -834,20 +843,19 @@
               <a class="source-link" href="https://www.councilonsustainabledevelopment.org/post/horizon-a-gamified-stock-market-app-for-new-retail-investors" target="_blank" rel="noopener" style="display:block;margin-top:8px">&#8599; Published PM doc &mdash; Horizon PRD</a>
             </div>
           </div>
-          <!-- P0.2 — artifact -->
+          <!-- P0.2 — LinkRight logo artifact -->
           <div class="artifact">
             <figure>
-              <div class="artifact-wrap">
-                <div class="artifact-ph">
-                  <span class="ph-icon">&#9783;</span>
-                  App screenshot &mdash; dropping image here
+              <div class="artifact-brand-wrap artifact-brand-wrap--teal">
+                <img src="assets/linkright-logo-light-transparent.png"
+                     alt="LinkRight"
+                     class="artifact-brand-logo artifact-brand-logo--wide" />
+                <div class="artifact-brand-meta">
+                  <span class="artifact-brand-name">LinkRight</span>
+                  <span class="artifact-brand-sub">Career navigation platform &middot; 44 features &middot; live on PyPI &middot; 147 surveys before line 1 of code</span>
                 </div>
-                <img src="assets/artifacts/linkright_app.png"
-                     alt="LinkRight career navigation platform"
-                     loading="lazy"
-                     onload="this.previousElementSibling.style.display='none';this.style.display='block'" />
               </div>
-              <figcaption>LinkRight &middot; 16-dimension evaluation framework &middot; 44 features &middot; live on PyPI</figcaption>
+              <figcaption>LinkRight &middot; 16-dimension evaluation framework &middot; fabrication guards &middot; pip install linkright</figcaption>
             </figure>
           </div>
         </div>
